@@ -1,0 +1,9 @@
+{
+  "totalUsers": 1200,
+  "activeUsers": 800,
+  "revenue": 125000,
+  "growthRate": 15,
+  "monthlySoldProducts": 50,
+  "monthlyRepairedProducts": 7,
+  "monthlyResealedProducts": 2
+}

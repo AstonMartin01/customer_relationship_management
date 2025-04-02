@@ -1,0 +1,21 @@
+.chart-container {
+    display: flex;
+    width: 100%;
+  }
+  
+  app-pie-chart {
+    flex: 0 0 35%; /* Takes up 50% of the width */
+  }
+  
+  .chart-stack {
+    display: flex;
+    flex-direction: column; /* Stack the two charts vertically */
+    flex: 0 0 30%; /* Takes up the remaining 50% of the width */
+  }
+  
+  app-bar-chart,
+  app-line-chart {
+    flex: 1; /* Each will take equal space in the stack */
+    height: 30%; /* Adjust the height for each chart */
+  }
+  
