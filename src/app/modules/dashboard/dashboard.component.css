@@ -1,21 +1,58 @@
-.chart-container {
-    display: flex;
-    width: 100%;
+.chart-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  grid-template-rows: auto auto;         /* 2 rows */
+  gap: 20px;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Each box takes full space of its grid cell */
+.chart-box {
+  background: #fff;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;             /* Enables Flexbox inside each grid cell */
+  justify-content: center;   /* Centers items horizontally */
+  align-items: center;       /* Centers items vertically */
+}
+
+/* Explicit placement */
+.chart-a { grid-column: 1; grid-row: 1; } /* Top-left */
+.chart-b { grid-column: 1; grid-row: 2; } /* Bottom-left */
+.chart-c { grid-column: 2; grid-row: 1; } /* Top-middle */
+.chart-d { grid-column: 2; grid-row: 2; } /* Bottom-middle */
+.chart-e { grid-column: 3; grid-row: 1; } /* Top-right */
+.chart-f { grid-column: 3; grid-row: 2; } /* Bottom-right */
+
+/* Responsive tweaks */
+@media (max-width: 900px) {
+  .chart-grid {
+    grid-template-columns: 1fr 1fr; /* Stack in 2 columns on medium screens */
   }
-  
-  app-pie-chart {
-    flex: 0 0 35%; /* Takes up 50% of the width */
+}
+
+@media (max-width: 600px) {
+  .chart-grid {
+    grid-template-columns: 1fr; /* Stack in 1 column on small screens */
   }
-  
-  .chart-stack {
-    display: flex;
-    flex-direction: column; /* Stack the two charts vertically */
-    flex: 0 0 30%; /* Takes up the remaining 50% of the width */
-  }
-  
-  app-bar-chart,
-  app-line-chart {
-    flex: 1; /* Each will take equal space in the stack */
-    height: 30%; /* Adjust the height for each chart */
-  }
-  
+}
+
+app-pie-chart,
+app-doughnut-chart {
+  display: block;
+  width: 70%;
+  margin: 0 auto; /* Optional: center inside the grid box */
+}
+
+app-bar-chart,
+app-line-chart,
+app-horizontal-bar-chart,
+app-area-chart {
+  display: block;
+  width: 100%;
+  margin: 0 auto; /* Optional: center inside the grid box */
+}
+

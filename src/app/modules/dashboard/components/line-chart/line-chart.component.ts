@@ -22,7 +22,7 @@ export class LineChartComponent implements OnInit {
         labels: ['Q1', 'Q2', 'Q3', 'Q4'],
         datasets: [
           {
-            label: 'Revenue Growth ($)',
+            label: 'Revenue',
             data: [data.revenue * 0.3, data.revenue * 0.8, data.revenue * 0.7, data.revenue], // Simulated growth
             borderColor: 'grey',
             backgroundColor: 'rgba(255, 159, 64, 0.5)',

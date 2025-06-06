@@ -9,6 +9,9 @@ import { BarChartComponent } from './components/bar-chart/bar-chart.component';
 import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 import { LineChartComponent } from './components/line-chart/line-chart.component';
 import { NgChartsModule } from 'ng2-charts';
+import { DoughnutChartComponent } from './components/doughnut-chart/doughnut-chart.component';
+import { HorizontalBarChartComponent } from './components/horizontal-bar-chart/horizontal-bar-chart.component';
+import { AreaChartComponent } from './components/area-chart/area-chart.component';
 
 const routes: Routes = [{ path: '', component: OverviewComponent }];
 
@@ -19,7 +22,10 @@ const routes: Routes = [{ path: '', component: OverviewComponent }];
     StatisticsComponent,
     BarChartComponent,
     PieChartComponent,
-    LineChartComponent
+    LineChartComponent,
+    DoughnutChartComponent,
+    HorizontalBarChartComponent,
+    AreaChartComponent
   ],
   imports: [
     CommonModule,

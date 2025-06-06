@@ -5,6 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgChartsModule } from 'ng2-charts';
+import { Chart, registerables } from 'chart.js';
+
+// Chart.register(...registerables); // ✅ REQUIRED
 
 @NgModule({
   declarations: [
