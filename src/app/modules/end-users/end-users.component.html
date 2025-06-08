@@ -1,0 +1,17 @@
+
+<div *ngIf="endUsers && endUsers.length">
+  <label for="metric-select">Select metric:</label>
+  <select id="metric-select" [(ngModel)]="selectedMetric" (change)="getEndUsersData()">
+    <option value="clientAge">Age</option>
+    <option value="purchasedProducts">Purchasing</option>
+    <option value="wishlistProducts">Wislist</option>
+  </select>
+
+  <div>
+    <app-bar-chart2 
+      [title]="title"
+      [labels]="labels"
+      [data]="chartData">
+    </app-bar-chart2>
+  </div>
+</div>

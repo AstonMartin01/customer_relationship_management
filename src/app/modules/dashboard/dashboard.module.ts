@@ -12,6 +12,7 @@ import { NgChartsModule } from 'ng2-charts';
 import { DoughnutChartComponent } from './components/doughnut-chart/doughnut-chart.component';
 import { HorizontalBarChartComponent } from './components/horizontal-bar-chart/horizontal-bar-chart.component';
 import { AreaChartComponent } from './components/area-chart/area-chart.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 const routes: Routes = [{ path: '', component: OverviewComponent }];
 
@@ -20,7 +21,7 @@ const routes: Routes = [{ path: '', component: OverviewComponent }];
     DashboardComponent,
     OverviewComponent,
     StatisticsComponent,
-    BarChartComponent,
+    // BarChartComponent,
     PieChartComponent,
     LineChartComponent,
     DoughnutChartComponent,
@@ -31,8 +32,9 @@ const routes: Routes = [{ path: '', component: OverviewComponent }];
     CommonModule,
     DashboardRoutingModule,
     RouterModule.forChild(routes),
-    NgChartsModule
+    NgChartsModule,
+    SharedModule
   ],
-  exports: [DashboardComponent, BarChartComponent, PieChartComponent, LineChartComponent],
+  exports: [DashboardComponent, PieChartComponent, LineChartComponent, DoughnutChartComponent, HorizontalBarChartComponent],
 })
 export class DashboardModule { }

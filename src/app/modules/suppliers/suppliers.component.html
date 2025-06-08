@@ -1,0 +1,16 @@
+
+<div *ngIf="suppliers && suppliers.length">
+  <label for="metric-select">Select metric:</label>
+  <select id="metric-select" [(ngModel)]="selectedMetric" (change)="getSuppliersData()">
+    <option value="callsNumber">Calls Number</option>
+    <option value="callsDuration">Calls Duration</option>
+  </select>
+
+  <div>
+    <app-bar-chart2 
+      [title]="title"
+      [labels]="labels"
+      [data]="chartData">
+    </app-bar-chart2>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<div *ngIf="employeesOrProducts && employeesOrProducts.length">
+    <!-- Inventory type selector -->
+  <label for="inventory-type">Select Dashboard:</label>
+  <select id="inventory-type" [(ngModel)]="selectedInventoryType" (change)="onInventoryTypeChange()">
+    <option value="internalProducts">Own Products</option>
+    <option value="employee">Repairs Employee</option>
+  </select>
+
+  <label for="metric-select">Select metric:</label>
+  <select id="metric-select" [(ngModel)]="selectedMetric" (change)="updateChartData()">
+    <option value="price" *ngIf="employeesOrProducts[0].price">Price</option>
+    <option value="priceWithVAT" *ngIf="employeesOrProducts[0].priceWithVAT">Price with VAT</option>
+    <option value="rating" *ngIf="employeesOrProducts[0].rating">Rating</option>
+    <option value="repaired" *ngIf="employeesOrProducts[0].repaired">Repair</option>
+    <option value="performanceScore" *ngIf="employeesOrProducts[0].performanceScore">Performance Score</option>
+    <option value="unexpectedDaysOff" *ngIf="employeesOrProducts[0].unexpectedDaysOff">Unexpected Days Off</option>
+    <option value="workedMonths" *ngIf="employeesOrProducts[0].workedMonths">Worked Months</option>
+    <option value="assignedTasks" *ngIf="employeesOrProducts[0].assignedTasks">Assigned Tasks</option>
+    <option value="solvedTasks" *ngIf="employeesOrProducts[0].solvedTasks">Solved Tasks</option>
+    <option value="salary" *ngIf="employeesOrProducts[0].salary">Salary</option>
+  </select>
+
+  <div>
+    <app-bar-chart2 
+      [title]="title"
+      [labels]="labels"
+      [data]="chartData">
+    </app-bar-chart2>
+  </div>
+</div>

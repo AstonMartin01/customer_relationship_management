@@ -1,0 +1,37 @@
+[
+  {
+    "clientName": "Maria Popescu",
+    "clientPhone": "+40 721 456 789",
+    "clientAge": 34,
+    "purchasedProducts": 18,
+    "wishlistProducts": 5
+  },
+  {
+    "clientName": "Andrei Ionescu",
+    "clientPhone": "+40 743 123 456",
+    "clientAge": 28,
+    "purchasedProducts": 25,
+    "wishlistProducts": 2
+  },
+  {
+    "clientName": "Elena Georgescu",
+    "clientPhone": "+40 755 987 321",
+    "clientAge": 41,
+    "purchasedProducts": 12,
+    "wishlistProducts": 7
+  },
+  {
+    "clientName": "Cristian Dumitrescu",
+    "clientPhone": "+40 766 345 678",
+    "clientAge": 37,
+    "purchasedProducts": 30,
+    "wishlistProducts": 3
+  },
+  {
+    "clientName": "Ioana Marinescu",
+    "clientPhone": "+40 712 654 987",
+    "clientAge": 22,
+    "purchasedProducts": 9,
+    "wishlistProducts": 10
+  }
+]

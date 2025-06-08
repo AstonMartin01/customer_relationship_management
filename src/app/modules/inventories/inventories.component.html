@@ -1,0 +1,27 @@
+<div *ngIf="inventory && inventory.length">
+  <!-- Inventory type selector -->
+  <label for="inventory-type">Select Inventory:</label>
+  <select id="inventory-type" [(ngModel)]="selectedInventoryType" (change)="onInventoryTypeChange()">
+    <option value="allProducts">All Products</option>
+    <option value="productInHouse">Own Products</option>
+    <option value="productByPartners">Partners Products</option>
+    <option value="rawMaterials">Raw Materials</option>
+  </select>
+
+  <!-- Metric selector -->  
+  <label for="metric-select">Select Metric:</label>
+  <select id="metric-select" [(ngModel)]="selectedMetric" (change)="updateChartData()">
+    <option value="price" *ngIf="inventory[0].price">Price</option>
+    <option value="priceWithVAT" *ngIf="inventory[0].priceWithVAT">Price with VAT</option>
+    <option value="rating" *ngIf="inventory[0].rating">Rating</option>
+  </select>
+
+  <!-- Chart component -->
+  <div>
+    <app-bar-chart2
+      [title]="title"
+      [labels]="labels"
+      [data]="chartData">
+    </app-bar-chart2>
+  </div>  
+</div>

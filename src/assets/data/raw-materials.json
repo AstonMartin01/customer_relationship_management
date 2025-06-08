@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Wheat Flour",
+    "description": "High-quality wheat flour used for bread and bakery production.",
+    "price": 1.25,
+    "priceByPartner": 1.10,
+    "rating": 3
+  },
+  {
+    "name": "Refined Sugar",
+    "description": "Fine white sugar ideal for food processing and beverages.",
+    "price": 11,
+    "priceByPartner": 9,
+    "rating": 3.5
+  },
+  {
+    "name": "Sunflower Oil",
+    "description": "Bulk 5L refined sunflower oil for commercial kitchen use.",
+    "price": 6.75,
+    "priceByPartner": 6.20,
+    "rating": 2.7
+  },
+  {
+    "name": "Arabica Coffee Beans",
+    "description": "Premium roasted Arabica coffee beans for retail packaging.",
+    "price": 15.50,
+    "priceByPartner": 14.00,
+    "rating": 4.3
+  },
+  {
+    "name": "Plastic Packaging Film",
+    "description": "Multi-purpose plastic film for food packaging and sealing.",
+    "price": 3.20,
+    "priceByPartner": 2.90,
+    "rating": 3.8
+  }
+]
