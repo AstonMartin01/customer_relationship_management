@@ -59,19 +59,19 @@ export class ManufacturingComponent implements OnInit {
     }
     else if (this.selectedMetric === 'price') {
       this.chartData = this.employeesOrProducts.map(s => s.price);
-      this.title = 'Inventory Overview (Prices)';
+      this.title = 'Products Overview (Prices)';
     } 
     else if (this.selectedMetric === 'priceWithVAT') {
       this.chartData = this.employeesOrProducts.map(s => s.priceWithVAT);
-      this.title = 'Inventory Overview (Prices VAT)';
+      this.title = 'Products Overview (Prices VAT)';
     } 
     else if (this.selectedMetric === 'rating') {
       this.chartData = this.employeesOrProducts.map(s => s.rating);
-      this.title = 'Inventory Overview (Ratings)';
+      this.title = 'Products Overview (Rating)';
     }
     else {
       this.chartData = this.employeesOrProducts.map(s => s.stock);
-      this.title = 'Inventory Overview (Prices VAT)';
+      this.title = 'Products Overview (Stock)';
     }
   }
  

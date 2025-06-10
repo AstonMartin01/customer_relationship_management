@@ -1,4 +1,15 @@
 <div *ngIf="employeesOrProducts && employeesOrProducts.length">
+  <label for="inventory-type">Select Chart:</label>
+  <select id="inventory-type" [(ngModel)]="selectedChartType" (change)="onChartTypeChange()">
+    <option value="barVertical">Vertical</option>
+    <option value="barHorizontal">Horizontal</option>
+    <option value="lineSquared">Line</option>
+    <option value="areaRounded">Area</option>
+    <option value="pie">Pie</option>
+    <option value="doughnut">Doughnut</option>
+  </select>
+
+
     <!-- Inventory type selector -->
   <label for="inventory-type">Select Dashboard:</label>
   <select id="inventory-type" [(ngModel)]="selectedInventoryType" (change)="onInventoryTypeChange()">
@@ -25,7 +36,10 @@
     <app-bar-chart2 
       [title]="title"
       [labels]="labels"
-      [data]="chartData">
+      [data]="chartData"
+      [chartType]="chartType"
+      [chartTypeOrientation]="chartTypeOrientation"
+      [chartTension]="chartTension">
     </app-bar-chart2>
   </div>
 </div>

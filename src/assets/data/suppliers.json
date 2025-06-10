@@ -5,7 +5,7 @@
     "callsDate": "2025-06-01",
     "callsDuration": 100,
     "smsNumber": 10,
-    "emailsNumber": 5
+    "emailsNumber": 2
   },
   {
     "name": "Supplier B",
@@ -13,30 +13,30 @@
     "callsDate": "2025-06-02",
     "callsDuration": 200,
     "smsNumber": 6,
-    "emailsNumber": 2
+    "emailsNumber": 4
   },
   {
     "name": "Supplier C",
     "callsNumber": 15,
     "callsDate": "2025-06-03",
     "callsDuration": 200,
-    "smsNumber": 6,
-    "emailsNumber": 2
+    "smsNumber": 8,
+    "emailsNumber": 5
   },
   {
     "name": "Supplier D",
     "callsNumber": 40,
     "callsDate": "2025-06-04",
     "callsDuration": 300,
-    "smsNumber": 6,
-    "emailsNumber": 2
+    "smsNumber": 5,
+    "emailsNumber": 1
   },
   {
     "name": "Supplier E",
     "callsNumber": 130,
     "callsDate": "2025-06-05",
     "callsDuration": 150,
-    "smsNumber": 6,
-    "emailsNumber": 2
+    "smsNumber": 13,
+    "emailsNumber": 3
   }
 ]

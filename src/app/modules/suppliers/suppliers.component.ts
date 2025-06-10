@@ -13,7 +13,7 @@ export class SuppliersComponent implements OnInit {
   // public callsNumbers: number[] = [];
   // public callsDurations: number[] = [];
   public chartData: number[] = [];
-  public selectedMetric: 'callsNumber' | 'callsDuration' = 'callsNumber';
+  public selectedMetric: 'callsNumber' | 'callsDuration' | 'smsNumber' | 'emailsNumber' = 'callsNumber';
   public title: string = "Suppliers Calls Overview";
   constructor(private dataService: DataService) {}
 
@@ -31,11 +31,19 @@ export class SuppliersComponent implements OnInit {
   updateChartData(): void {
     if (this.selectedMetric === 'callsNumber') {
       this.chartData = this.suppliers.map(s => s.callsNumber);
-      this.title = 'Suppliers Calls Overview (Number)';
+      this.title = 'Suppliers Overview (Calls Number)';
+    } 
+    else if (this.selectedMetric === 'callsDuration') {
+      this.chartData = this.suppliers.map(s => s.callsDuration);
+      this.title = 'Suppliers Overview (Calls Duration)';
+    }  
+    else if (this.selectedMetric === 'smsNumber') {
+      this.chartData = this.suppliers.map(s => s.smsNumber);
+      this.title = 'Suppliers Overview (SMS Number)';
     } 
     else {
-      this.chartData = this.suppliers.map(s => s.callsDuration);
-      this.title = 'Suppliers Calls Overview (Duration)';
+      this.chartData = this.suppliers.map(s => s.emailsNumber);
+      this.title = 'Suppliers Calls Overview (E-mails Number)';
     }
   }
 

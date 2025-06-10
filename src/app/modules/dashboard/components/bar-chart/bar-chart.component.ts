@@ -48,7 +48,8 @@ export class BarChartComponent implements OnInit {
       this.data.sort((a, b) => b.value - a.value);
       this.sortDirection = 'desc';
       this.buttonText = ''; // Sorteaza invers
-    } else {
+    } 
+    else {
       this.data.sort((a, b) => a.value - b.value);
       this.sortDirection = 'asc';
       this.buttonText = ''; // Sorteaza invers

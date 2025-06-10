@@ -12,7 +12,7 @@ export class InventoriesComponent implements OnInit {
   public chartData: number[] = [];
   public selectedInventoryType: 'allProducts' | 'productInHouse' | 'productByPartners' | 'rawMaterials' = 'allProducts';
   public selectedMetric: 'price' | 'priceWithVAT' | 'rating' = 'price';
-  public title: string = "Inventory Overview (Prices)";
+  public title: string = "Products Overview (Prices)";
 
   constructor(private dataService: DataService) {}
 
@@ -38,15 +38,15 @@ export class InventoriesComponent implements OnInit {
   updateChartData(): void {
     if (this.selectedMetric === 'price') {
       this.chartData = this.inventory.map(s => s.price);
-      this.title = 'Inventory Overview (Prices)';
+      this.title = 'Products Overview (Prices)';
     } 
     else if (this.selectedMetric === 'priceWithVAT') {
       this.chartData = this.inventory.map(s => s.priceWithVAT);
-      this.title = 'Inventory Overview (Prices VAT)';
+      this.title = 'Products Overview (Prices VAT)';
     } 
     else {
       this.chartData = this.inventory.map(s => s.rating);
-      this.title = 'Inventory Overview (Ratings)';
+      this.title = 'Products Overview (Rating)';
     }
   }
 

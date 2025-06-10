@@ -59,23 +59,23 @@ export class DeliveriesComponent implements OnInit {
     }
     else if (this.selectedMetric === 'price') {
       this.chartData = this.employeesOrProducts.map(s => s.price);
-      this.title = 'Inventory Overview (Prices)';
+      this.title = 'Products Overview (Prices)';
     } 
     else if (this.selectedMetric === 'priceWithVAT') {
       this.chartData = this.employeesOrProducts.map(s => s.priceWithVAT);
-      this.title = 'Inventory Overview (Prices VAT)';
+      this.title = 'Products Overview (Prices VAT)';
     } 
     else if (this.selectedMetric === 'rating') {
       this.chartData = this.employeesOrProducts.map(s => s.rating);
-      this.title = 'Inventory Overview (Prices VAT)';
+      this.title = 'Products Overview (Rating)';
     } 
     else if (this.selectedMetric === 'delivered') {
       this.chartData = this.employeesOrProducts.map(s => s.delivered);
-      this.title = 'Inventory Overview (Prices VAT)';
+      this.title = 'Products Overview (Delivered)';
     } 
     else {
       this.chartData = this.employeesOrProducts.map(s => s.returned);
-      this.title = 'Inventory Overview (Ratings)';
+      this.title = 'Products Overview (Returned)';
     }
   }
  

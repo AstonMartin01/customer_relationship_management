@@ -1,7 +1,16 @@
+
 <div class="chart-container">
+  <span class="sort-buttons">
+    <label for="order-type">Select Order:</label>
+    <select id="order-type" [(ngModel)]="selectedOrder" (change)="sortData()">
+      <option value="ascending">Ascending</option>
+      <option value="descending">Descending</option>
+    </select>
+  </span>
+  
   <canvas baseChart
     [data]="barChartData"
     [options]="barChartOptions"
-    type="bar">
+    [type]="barChartType">
   </canvas>
 </div>

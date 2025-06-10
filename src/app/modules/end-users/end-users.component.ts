@@ -39,7 +39,7 @@ export class EndUsersComponent implements OnInit {
     }     
     else {
       this.chartData = this.endUsers.map(s => s.wishlistProducts);
-      this.title = 'End Users Overview (Wislist)';
+      this.title = 'End Users Overview (Wishlist)';
     }
    }
  

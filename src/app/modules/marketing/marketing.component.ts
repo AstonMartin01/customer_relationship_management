@@ -14,13 +14,56 @@ export class MarketingComponent implements OnInit {
   public selectedInventoryType: 'internalProducts' | 'employee' = 'internalProducts';
   public selectedMetric: string = '';
   public title: string = "Marketing Overview";
+  public chartType: string = "bar";
+  public chartTypeOrientation: string = "x";
+  public chartTension: number = 0;
+  public selectedChartType: string = 'barVertical';
+
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
     this.getInternalProducts();
-    this.selectedMetric = 'price'
+    this.selectedMetric = 'price';
+    this.selectedChartType = 'barVertical';
+    this.onChartTypeChange();
+    this.getInternalProducts();
   }
  
+  onChartTypeChange(): void {
+    switch (this.selectedChartType) {
+      case 'barVertical':
+        this.chartType = 'bar';
+        this.chartTypeOrientation = 'x';
+        this.chartTension = 0;
+        break;
+      case 'barHorizontal':
+        this.chartType = 'bar';
+        this.chartTypeOrientation = 'y';
+        this.chartTension = 0;
+        break;
+      case 'lineSquared':
+        this.chartType = 'line';
+        this.chartTypeOrientation = 'x';
+        this.chartTension = 0;
+        break;
+      case 'areaRounded':
+        this.chartType = 'line';
+        this.chartTypeOrientation = 'x';
+        this.chartTension = 0.4;
+        break;
+      case 'pie':
+        this.chartType = 'pie';
+        this.chartTypeOrientation = 'x';
+        this.chartTension = 0;
+        break;
+      case 'doughnut':
+        this.chartType = 'doughnut';
+        this.chartTypeOrientation = 'x';
+        this.chartTension = 0;
+        break;
+      }
+    }
+
     onInventoryTypeChange(): void {
     if (this.selectedInventoryType === 'internalProducts') {
       this.getInternalProducts();
@@ -59,23 +102,23 @@ export class MarketingComponent implements OnInit {
     }
     else if (this.selectedMetric === 'price') {
       this.chartData = this.employeesOrProducts.map(s => s.price);
-      this.title = 'Inventory Overview (Prices)';
+      this.title = 'Products Overview (Prices)';
     } 
     else if (this.selectedMetric === 'priceWithVAT') {
       this.chartData = this.employeesOrProducts.map(s => s.priceWithVAT);
-      this.title = 'Inventory Overview (Prices VAT)';
+      this.title = 'Products Overview (Prices VAT)';
     } 
     else if (this.selectedMetric === 'rating') {
       this.chartData = this.employeesOrProducts.map(s => s.rating);
-      this.title = 'Inventory Overview (Prices VAT)';
+      this.title = 'Products Overview (Rating)';
     } 
     else if (this.selectedMetric === 'discounted') {
       this.chartData = this.employeesOrProducts.map(s => s.discounted);
-      this.title = 'Inventory Overview (Prices VAT)';
+      this.title = 'Products Overview (Discounted)';
     } 
     else {
       this.chartData = this.employeesOrProducts.map(s => s.sold);
-      this.title = 'Inventory Overview (Ratings)';
+      this.title = 'Products Overview (Sold)';
     }
   }
  
