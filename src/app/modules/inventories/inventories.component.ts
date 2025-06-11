@@ -11,13 +11,55 @@ export class InventoriesComponent implements OnInit {
   public labels: string[] = [];
   public chartData: number[] = [];
   public selectedInventoryType: "allProducts" | "productInHouse" | "productByPartners" | "rawMaterials" = "allProducts";
-  public selectedMetric: "price" | "priceWithVAT" | "rating" = "price";
+  public selectedMetric: string = "price";
   public title: string = "Products Overview (Prices)";
+  public chartType: string = "bar";
+  public chartTypeOrientation: string = "x";
+  public chartTension: number = 0;
+  public selectedChartType: string = "barVertical";  
 
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
     this.getAllProducts();
+    this.selectedMetric = "price";
+    this.selectedChartType = "barVertical";
+    this.onChartTypeChange();
+  }
+
+  onChartTypeChange(): void {
+    switch (this.selectedChartType) {
+      case "barVertical":
+        this.chartType = "bar";
+        this.chartTypeOrientation = "x";
+        this.chartTension = 0;
+        break;
+      case "barHorizontal":
+        this.chartType = "bar";
+        this.chartTypeOrientation = "y";
+        this.chartTension = 0;
+        break;
+      case "lineSquared":
+        this.chartType = "line";
+        this.chartTypeOrientation = "x";
+        this.chartTension = 0;
+        break;
+      case "areaRounded":
+        this.chartType = "line";
+        this.chartTypeOrientation = "x";
+        this.chartTension = 0.5;
+        break;
+      case "pie":
+        this.chartType = "pie";
+        this.chartTypeOrientation = "x";
+        this.chartTension = 0;
+        break;
+      case "doughnut":
+        this.chartType = "doughnut";
+        this.chartTypeOrientation = "x";
+        this.chartTension = 0;
+        break;
+    }
   }
 
   onInventoryTypeChange(): void {

@@ -13,13 +13,20 @@ export class SuppliersComponent implements OnInit {
   // public callsNumbers: number[] = [];
   // public callsDurations: number[] = [];
   public chartData: number[] = [];
-  public selectedMetric: "callsNumber" | "callsDuration" | "smsNumber" | "emailsNumber" = "callsNumber";
+  public selectedMetric: string = "";
   public title: string = "Suppliers Calls Overview";
+  public chartType: string = "bar";
+  public chartTypeOrientation: string = "x";
+  public chartTension: number = 0;
+  public selectedChartType: string = "barVertical";
+
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
     this.getSuppliersData();
-
+    this.selectedMetric = "callsNumber";
+    this.selectedChartType = "barVertical";
+    this.onChartTypeChange();
     // this.suppliers = [
     //   { name: "Supplier A", callsNumber: 100, callsDuration: 100 },
     //   { name: "Supplier B", callsNumber: 150, callsDuration: 100 },
@@ -27,6 +34,41 @@ export class SuppliersComponent implements OnInit {
     //   { name: "Supplier D", callsNumber: 200, callsDuration: 300 },
     // ];
   }
+
+  onChartTypeChange(): void {
+    switch (this.selectedChartType) {
+      case "barVertical":
+        this.chartType = "bar";
+        this.chartTypeOrientation = "x";
+        this.chartTension = 0;
+        break;
+      case "barHorizontal":
+        this.chartType = "bar";
+        this.chartTypeOrientation = "y";
+        this.chartTension = 0;
+        break;
+      case "lineSquared":
+        this.chartType = "line";
+        this.chartTypeOrientation = "x";
+        this.chartTension = 0;
+        break;
+      case "areaRounded":
+        this.chartType = "line";
+        this.chartTypeOrientation = "x";
+        this.chartTension = 0.5;
+        break;
+      case "pie":
+        this.chartType = "pie";
+        this.chartTypeOrientation = "x";
+        this.chartTension = 0;
+        break;
+      case "doughnut":
+        this.chartType = "doughnut";
+        this.chartTypeOrientation = "x";
+        this.chartTension = 0;
+        break;
+    }
+  }  
 
   updateChartData(): void {
     if (this.selectedMetric === "callsNumber") {

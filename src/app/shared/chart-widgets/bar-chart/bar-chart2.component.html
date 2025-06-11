@@ -1,8 +1,8 @@
 
 <div class="chart-container">
   <span class="sort-buttons">
-    <label for="order-type">Select Order:</label>
-    <select id="order-type" [(ngModel)]="selectedOrder" (change)="sortData()">
+    <label class="label-style">Select Order:</label>
+    <select class="option-style" [(ngModel)]="selectedOrder" (change)="sortData()">
       <option value="ascending">Ascending</option>
       <option value="descending">Descending</option>
     </select>

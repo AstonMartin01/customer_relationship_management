@@ -1,13 +1,22 @@
 <div *ngIf="employeesOrProducts && employeesOrProducts.length">
-    <!-- Inventory type selector -->
-  <label for="inventory-type">Select Dashboard:</label>
-  <select id="inventory-type" [(ngModel)]="selectedInventoryType" (change)="onInventoryTypeChange()">
+  <label class="label-style">Select Chart:</label>
+  <select class="option-style" [(ngModel)]="selectedChartType" (change)="onChartTypeChange()">
+    <option value="barVertical">Vertical</option>
+    <option value="barHorizontal">Horizontal</option>
+    <option value="lineSquared">Line</option>
+    <option value="areaRounded">Area</option>
+    <option value="pie">Pie</option>
+    <option value="doughnut">Doughnut</option>
+  </select>
+  
+  <label class="label-style">Select Dashboard:</label>
+  <select class="option-style" [(ngModel)]="selectedInventoryType" (change)="onInventoryTypeChange()">
     <option value="internalProducts">Own Products</option>
     <option value="employee">Manufacturing Employee</option>
   </select>
 
-  <label for="metric-select">Select metric:</label>
-  <select id="metric-select" [(ngModel)]="selectedMetric" (change)="updateChartData()">
+  <label class="label-style">Select Metric:</label>
+  <select class="option-style" [(ngModel)]="selectedMetric" (change)="updateChartData()">
     <option value="price" *ngIf="employeesOrProducts[0].price">Price</option>
     <option value="priceWithVAT" *ngIf="employeesOrProducts[0].priceWithVAT">Price with VAT</option>
     <option value="rating" *ngIf="employeesOrProducts[0].rating">Rating</option>
@@ -24,7 +33,10 @@
     <app-bar-chart2 
       [title]="title"
       [labels]="labels"
-      [data]="chartData">
+      [data]="chartData"
+      [chartType]="chartType"
+      [chartTypeOrientation]="chartTypeOrientation"
+      [chartTension]="chartTension">
     </app-bar-chart2>
   </div>
 </div>

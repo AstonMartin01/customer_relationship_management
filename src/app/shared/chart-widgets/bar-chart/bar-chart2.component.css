@@ -1,5 +1,5 @@
 .chart-container {
-    width: 80%;
+  width: 80%;
 }
 
 .sort-buttons {
@@ -7,4 +7,12 @@
   display: flex;
   gap: 1rem;
   float: right;
+}
+
+.label-style {
+  /* padding: 0.25rem; */
+}
+
+.option-style {
+  margin-left: -0.75rem;
 }

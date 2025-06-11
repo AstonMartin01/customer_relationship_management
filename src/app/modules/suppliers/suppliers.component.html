@@ -1,7 +1,17 @@
 
 <div *ngIf="suppliers && suppliers.length">
-  <label for="metric-select">Select metric:</label>
-  <select id="metric-select" [(ngModel)]="selectedMetric" (change)="getSuppliersData()">
+  <label class="label-style">Select Chart:</label>
+  <select class="option-style" [(ngModel)]="selectedChartType" (change)="onChartTypeChange()">
+    <option value="barVertical">Vertical</option>
+    <option value="barHorizontal">Horizontal</option>
+    <option value="lineSquared">Line</option>
+    <option value="areaRounded">Area</option>
+    <option value="pie">Pie</option>
+    <option value="doughnut">Doughnut</option>
+  </select>
+
+  <label class="label-style">Select Metric:</label>
+  <select class="option-style" [(ngModel)]="selectedMetric" (change)="getSuppliersData()">
     <option value="callsNumber">Calls Number</option>
     <option value="callsDuration">Calls Duration</option>
     <option value="smsNumber">SMS Number</option>
@@ -12,7 +22,10 @@
     <app-bar-chart2 
       [title]="title"
       [labels]="labels"
-      [data]="chartData">
+      [data]="chartData"
+      [chartType]="chartType"
+      [chartTypeOrientation]="chartTypeOrientation"
+      [chartTension]="chartTension">
     </app-bar-chart2>
   </div>
 </div>

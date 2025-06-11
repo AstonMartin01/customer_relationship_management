@@ -44,7 +44,7 @@ export class BarChart2Component implements OnChanges {
       plugins: {
         legend: {
           labels: {
-            padding: 20,
+            padding: 30,
             color: "green",            
             font: {
               size: 26,

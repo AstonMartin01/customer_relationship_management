@@ -25,7 +25,7 @@ export class MarketingComponent implements OnInit {
     this.selectedMetric = "price";
     this.selectedChartType = "barVertical";
     this.onChartTypeChange();
-    this.getInternalProducts();
+    // this.getInternalProducts();
   }
  
   onChartTypeChange(): void {
@@ -60,10 +60,10 @@ export class MarketingComponent implements OnInit {
         this.chartTypeOrientation = "x";
         this.chartTension = 0;
         break;
-      }
     }
+  }
 
-    onInventoryTypeChange(): void {
+  onInventoryTypeChange(): void {
     if (this.selectedInventoryType === "internalProducts") {
       this.getInternalProducts();
       this.selectedMetric = "price";

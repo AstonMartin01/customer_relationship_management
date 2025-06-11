@@ -13,13 +13,20 @@ export class EndUsersComponent implements OnInit {
   // public callsNumbers: number[] = [];
   // public callsDurations: number[] = [];
   public chartData: number[] = [];
-  public selectedMetric: "clientAge" | "purchasedProducts" | "wishlistProducts" = "clientAge";
+  public selectedMetric: string = "clientAge";
   public title: string = "End Users Overview";
+  public chartType: string = "bar";
+  public chartTypeOrientation: string = "x";
+  public chartTension: number = 0;
+  public selectedChartType: string = "barVertical"; 
+
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
     this.getEndUsersData();
-
+    this.selectedMetric = "clientAge";
+    this.selectedChartType = "barVertical";
+    this.onChartTypeChange();
     // this.suppliers = [
     //   { name: "Supplier A", callsNumber: 100, callsDuration: 100 },
     //   { name: "Supplier B", callsNumber: 150, callsDuration: 100 },
@@ -28,7 +35,42 @@ export class EndUsersComponent implements OnInit {
     // ];
   }
  
-   updateChartData(): void {
+  onChartTypeChange(): void {
+    switch (this.selectedChartType) {
+      case "barVertical":
+        this.chartType = "bar";
+        this.chartTypeOrientation = "x";
+        this.chartTension = 0;
+        break;
+      case "barHorizontal":
+        this.chartType = "bar";
+        this.chartTypeOrientation = "y";
+        this.chartTension = 0;
+        break;
+      case "lineSquared":
+        this.chartType = "line";
+        this.chartTypeOrientation = "x";
+        this.chartTension = 0;
+        break;
+      case "areaRounded":
+        this.chartType = "line";
+        this.chartTypeOrientation = "x";
+        this.chartTension = 0.5;
+        break;
+      case "pie":
+        this.chartType = "pie";
+        this.chartTypeOrientation = "x";
+        this.chartTension = 0;
+        break;
+      case "doughnut":
+        this.chartType = "doughnut";
+        this.chartTypeOrientation = "x";
+        this.chartTension = 0;
+        break;
+    }
+  }
+
+  updateChartData(): void {
     if (this.selectedMetric === "clientAge") {
       this.chartData = this.endUsers.map(s => s.clientAge);
       this.title = "End Users Overview (Age)";
