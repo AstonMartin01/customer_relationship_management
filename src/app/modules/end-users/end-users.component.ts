@@ -13,7 +13,7 @@ export class EndUsersComponent implements OnInit {
   // public callsNumbers: number[] = [];
   // public callsDurations: number[] = [];
   public chartData: number[] = [];
-  public selectedMetric: 'clientAge' | 'purchasedProducts' | 'wishlistProducts' = 'clientAge';
+  public selectedMetric: "clientAge" | "purchasedProducts" | "wishlistProducts" = "clientAge";
   public title: string = "End Users Overview";
   constructor(private dataService: DataService) {}
 
@@ -21,25 +21,25 @@ export class EndUsersComponent implements OnInit {
     this.getEndUsersData();
 
     // this.suppliers = [
-    //   { name: 'Supplier A', callsNumber: 100, callsDuration: 100 },
-    //   { name: 'Supplier B', callsNumber: 150, callsDuration: 100 },
-    //   { name: 'Supplier C', callsNumber: 100, callsDuration: 200 },
-    //   { name: 'Supplier D', callsNumber: 200, callsDuration: 300 },
+    //   { name: "Supplier A", callsNumber: 100, callsDuration: 100 },
+    //   { name: "Supplier B", callsNumber: 150, callsDuration: 100 },
+    //   { name: "Supplier C", callsNumber: 100, callsDuration: 200 },
+    //   { name: "Supplier D", callsNumber: 200, callsDuration: 300 },
     // ];
   }
  
    updateChartData(): void {
-    if (this.selectedMetric === 'clientAge') {
+    if (this.selectedMetric === "clientAge") {
       this.chartData = this.endUsers.map(s => s.clientAge);
-      this.title = 'End Users Overview (Age)';
+      this.title = "End Users Overview (Age)";
     } 
-    else if (this.selectedMetric === 'purchasedProducts'){
+    else if (this.selectedMetric === "purchasedProducts"){
       this.chartData = this.endUsers.map(s => s.purchasedProducts);
-      this.title = 'End Users Overview (Purchasing)';
+      this.title = "End Users Overview (Purchasing)";
     }     
     else {
       this.chartData = this.endUsers.map(s => s.wishlistProducts);
-      this.title = 'End Users Overview (Wishlist)';
+      this.title = "End Users Overview (Wishlist)";
     }
    }
  

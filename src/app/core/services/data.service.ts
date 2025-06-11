@@ -14,27 +14,27 @@ export class DataService {
     constructor(private http: HttpClient) {}
   
     getSuppliers(): Observable<Supplier[]> {
-        const apiUrl = 'assets/data/suppliers.json';
+        const apiUrl = "assets/data/suppliers.json";
         return this.http.get<Supplier[]>(apiUrl);
     }
 
     getProducts(): Observable<Product[]> {
-        const apiUrl = 'assets/data/products.json';
+        const apiUrl = "assets/data/products.json";
         return this.http.get<Product[]>(apiUrl);
     }
 
     getRawMaterials(): Observable<RawMaterial[]> {
-        const apiUrl = 'assets/data/raw-materials.json';
+        const apiUrl = "assets/data/raw-materials.json";
         return this.http.get<RawMaterial[]>(apiUrl);
     }
 
     getEndUsers(): Observable<EndUser[]> {
-        const apiUrl = 'assets/data/end-users.json';
+        const apiUrl = "assets/data/end-users.json";
         return this.http.get<EndUser[]>(apiUrl);
     }
 
     getEmployee(): Observable<Employee[]> {
-        const apiUrl = 'assets/data/employee.json';
+        const apiUrl = "assets/data/employee.json";
         return this.http.get<Employee[]>(apiUrl);
     }
 }

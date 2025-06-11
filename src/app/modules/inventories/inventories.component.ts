@@ -10,8 +10,8 @@ export class InventoriesComponent implements OnInit {
   public inventory: any[] = [];
   public labels: string[] = [];
   public chartData: number[] = [];
-  public selectedInventoryType: 'allProducts' | 'productInHouse' | 'productByPartners' | 'rawMaterials' = 'allProducts';
-  public selectedMetric: 'price' | 'priceWithVAT' | 'rating' = 'price';
+  public selectedInventoryType: "allProducts" | "productInHouse" | "productByPartners" | "rawMaterials" = "allProducts";
+  public selectedMetric: "price" | "priceWithVAT" | "rating" = "price";
   public title: string = "Products Overview (Prices)";
 
   constructor(private dataService: DataService) {}
@@ -21,13 +21,13 @@ export class InventoriesComponent implements OnInit {
   }
 
   onInventoryTypeChange(): void {
-    if (this.selectedInventoryType === 'allProducts') {
+    if (this.selectedInventoryType === "allProducts") {
       this.getAllProducts();
     } 
-    else if (this.selectedInventoryType === 'productInHouse') {
+    else if (this.selectedInventoryType === "productInHouse") {
       this.getInternalProducts();
     }  
-    else if (this.selectedInventoryType === 'productByPartners') {
+    else if (this.selectedInventoryType === "productByPartners") {
       this.getExternalProducts();
     } 
     else {
@@ -36,17 +36,17 @@ export class InventoriesComponent implements OnInit {
   }
 
   updateChartData(): void {
-    if (this.selectedMetric === 'price') {
+    if (this.selectedMetric === "price") {
       this.chartData = this.inventory.map(s => s.price);
-      this.title = 'Products Overview (Prices)';
+      this.title = "Products Overview (Prices)";
     } 
-    else if (this.selectedMetric === 'priceWithVAT') {
+    else if (this.selectedMetric === "priceWithVAT") {
       this.chartData = this.inventory.map(s => s.priceWithVAT);
-      this.title = 'Products Overview (Prices VAT)';
+      this.title = "Products Overview (Prices VAT)";
     } 
     else {
       this.chartData = this.inventory.map(s => s.rating);
-      this.title = 'Products Overview (Rating)';
+      this.title = "Products Overview (Rating)";
     }
   }
 
@@ -61,7 +61,7 @@ export class InventoriesComponent implements OnInit {
   getInternalProducts(): void {
     this.dataService.getProducts().subscribe(data => {
       this.inventory = data || [];
-      this.inventory = this.inventory.filter(e => e.type === 'internal');
+      this.inventory = this.inventory.filter(e => e.type === "internal");
       this.labels = this.inventory.map(s => s.name);
       this.updateChartData();
     });
@@ -70,7 +70,7 @@ export class InventoriesComponent implements OnInit {
   getExternalProducts(): void {
     this.dataService.getProducts().subscribe(data => {
       this.inventory = data || [];
-      this.inventory = this.inventory.filter(e => e.type === 'external');
+      this.inventory = this.inventory.filter(e => e.type === "external");
       this.labels = this.inventory.map(s => s.name);
       this.updateChartData();
     });

@@ -5,7 +5,7 @@ import { Supplier } from '../models/supplier.model';
 
 @Injectable({ providedIn: 'root' })
 export class SupplierService {
-  private dataUrl = 'assets/data/suppliers.json';
+  private dataUrl = "assets/data/suppliers.json";
 
   constructor(private http: HttpClient) {}
 

@@ -13,7 +13,7 @@ export class SuppliersComponent implements OnInit {
   // public callsNumbers: number[] = [];
   // public callsDurations: number[] = [];
   public chartData: number[] = [];
-  public selectedMetric: 'callsNumber' | 'callsDuration' | 'smsNumber' | 'emailsNumber' = 'callsNumber';
+  public selectedMetric: "callsNumber" | "callsDuration" | "smsNumber" | "emailsNumber" = "callsNumber";
   public title: string = "Suppliers Calls Overview";
   constructor(private dataService: DataService) {}
 
@@ -21,29 +21,29 @@ export class SuppliersComponent implements OnInit {
     this.getSuppliersData();
 
     // this.suppliers = [
-    //   { name: 'Supplier A', callsNumber: 100, callsDuration: 100 },
-    //   { name: 'Supplier B', callsNumber: 150, callsDuration: 100 },
-    //   { name: 'Supplier C', callsNumber: 100, callsDuration: 200 },
-    //   { name: 'Supplier D', callsNumber: 200, callsDuration: 300 },
+    //   { name: "Supplier A", callsNumber: 100, callsDuration: 100 },
+    //   { name: "Supplier B", callsNumber: 150, callsDuration: 100 },
+    //   { name: "Supplier C", callsNumber: 100, callsDuration: 200 },
+    //   { name: "Supplier D", callsNumber: 200, callsDuration: 300 },
     // ];
   }
 
   updateChartData(): void {
-    if (this.selectedMetric === 'callsNumber') {
+    if (this.selectedMetric === "callsNumber") {
       this.chartData = this.suppliers.map(s => s.callsNumber);
-      this.title = 'Suppliers Overview (Calls Number)';
+      this.title = "Suppliers Overview (Calls Number)";
     } 
-    else if (this.selectedMetric === 'callsDuration') {
+    else if (this.selectedMetric === "callsDuration") {
       this.chartData = this.suppliers.map(s => s.callsDuration);
-      this.title = 'Suppliers Overview (Calls Duration)';
+      this.title = "Suppliers Overview (Calls Duration)";
     }  
-    else if (this.selectedMetric === 'smsNumber') {
+    else if (this.selectedMetric === "smsNumber") {
       this.chartData = this.suppliers.map(s => s.smsNumber);
-      this.title = 'Suppliers Overview (SMS Number)';
+      this.title = "Suppliers Overview (SMS Number)";
     } 
     else {
       this.chartData = this.suppliers.map(s => s.emailsNumber);
-      this.title = 'Suppliers Calls Overview (E-mails Number)';
+      this.title = "Suppliers Calls Overview (E-mails Number)";
     }
   }
 

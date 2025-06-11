@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RepairsComponent } from './repairs.component';
 
-const routes: Routes = [{ path: '', component: RepairsComponent }];
+const routes: Routes = [{ path: "", component: RepairsComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

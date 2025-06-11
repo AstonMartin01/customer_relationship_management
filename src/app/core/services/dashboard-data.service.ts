@@ -6,7 +6,7 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root'
 })
 export class DashboardDataService {
-  private jsonUrl = 'assets/mock-data/dashboard.json';
+  private jsonUrl = "assets/mock-data/dashboard.json";
 
 constructor(private http: HttpClient) {}
 
