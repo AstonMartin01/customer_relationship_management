@@ -1,5 +1,5 @@
 
-<div *ngIf="endUsers && endUsers.length">
+<div *ngIf="clients && clients.length">
   <label class="label-style">Select Chart:</label>
   <select class="option-style" [(ngModel)]="selectedChartType" (change)="onChartTypeChange()">
     <option value="barVertical">Vertical</option>
@@ -11,10 +11,10 @@
   </select>
 
   <label class="label-style">Select Metric:</label>
-  <select class="option-style" [(ngModel)]="selectedMetric" (change)="getEndUsersData()">
-    <option value="clientAge">Age</option>
-    <option value="purchasedProducts">Purchasing</option>
-    <option value="wishlistProducts">Wishlist</option>
+  <select class="option-style" [(ngModel)]="selectedMetric" (change)="getClientsData()">
+    <option value="age">Age</option>
+    <option value="purchasedProductsQuantity">Purchasing</option>
+    <option value="wishlistProductsQuantity">Wishlist</option>
   </select>
 
   <div>

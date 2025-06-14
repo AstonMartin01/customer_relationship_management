@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { EndUser } from 'src/app/core/models/end-user.model';
+import { Client } from 'src/app/core/models/client.model';
 import { DataService } from 'src/app/core/services/data.service';
 
 @Component({
-  selector: 'app-end-users',
-  templateUrl: './end-users.component.html',
-  styleUrls: ['./end-users.component.css']
+  selector: 'app-clients',
+  templateUrl: './clients.component.html',
+  styleUrls: ['./clients.component.css']
 })
-export class EndUsersComponent implements OnInit {
-  public endUsers: EndUser[] = [];
+export class ClientsComponent implements OnInit {
+  public clients: Client[] = [];
   public labels: string[] = [];
   // public callsNumbers: number[] = [];
   // public callsDurations: number[] = [];
   public chartData: number[] = [];
-  public selectedMetric: string = "clientAge";
+  public selectedMetric: string = "age";
   public title: string = "End Users Overview";
   public chartType: string = "bar";
   public chartTypeOrientation: string = "x";
@@ -23,8 +23,8 @@ export class EndUsersComponent implements OnInit {
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
-    this.getEndUsersData();
-    this.selectedMetric = "clientAge";
+    this.getClientsData();
+    this.selectedMetric = "age";
     this.selectedChartType = "barVertical";
     this.onChartTypeChange();
     // this.suppliers = [
@@ -71,24 +71,24 @@ export class EndUsersComponent implements OnInit {
   }
 
   updateChartData(): void {
-    if (this.selectedMetric === "clientAge") {
-      this.chartData = this.endUsers.map(s => s.clientAge);
+    if (this.selectedMetric === "age") {
+      this.chartData = this.clients.map(s => s.age);
       this.title = "End Users Overview (Age)";
     } 
-    else if (this.selectedMetric === "purchasedProducts"){
-      this.chartData = this.endUsers.map(s => s.purchasedProducts);
+    else if (this.selectedMetric === "purchasedProductsQuantity"){
+      this.chartData = this.clients.map(s => s.purchasedProductsQuantity);
       this.title = "End Users Overview (Purchasing)";
     }     
     else {
-      this.chartData = this.endUsers.map(s => s.wishlistProducts);
+      this.chartData = this.clients.map(s => s.wishlistProductsQuantity);
       this.title = "End Users Overview (Wishlist)";
     }
    }
  
-  getEndUsersData(): void {
-    this.dataService.getEndUsers().subscribe(data => {
-      this.endUsers = data || [];
-      this.labels = this.endUsers.map(s => s.clientName);
+  getClientsData(): void {
+    this.dataService.getClients().subscribe(data => {
+      this.clients = data || [];
+      this.labels = this.clients.map(s => s.name);
       // this.callsNumbers = this.suppliers.map(s => s.callsNumber);
       // this.callsDurations = this.suppliers.map(s => s.callsDuration);
       this.updateChartData(); // Initialize chartData

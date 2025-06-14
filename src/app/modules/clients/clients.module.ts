@@ -1,21 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { EndUsersRoutingModule } from './end-users-routing.module';
-import { EndUsersComponent } from './end-users.component';
+import { ClientsRoutingModule } from './clients-routing.module';
+import { ClientsComponent } from './clients.component';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
   declarations: [
-    EndUsersComponent
+    ClientsComponent
   ],
   imports: [
     CommonModule,
-    EndUsersRoutingModule,
+    ClientsRoutingModule,
     SharedModule,
     FormsModule
   ]
 })
-export class EndUsersModule { }
+export class ClientsModule { }

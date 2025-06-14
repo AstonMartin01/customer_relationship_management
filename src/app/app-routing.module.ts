@@ -6,7 +6,7 @@ const routes: Routes = [
   { path: "dashboard", loadChildren: () => import("./modules/dashboard/dashboard.module").then(m => m.DashboardModule) },
   { path: "repairs", loadChildren: () => import("./modules/repairs/repairs.module").then(m => m.RepairsModule) },
   { path: "shared", loadChildren: () => import("./shared/shared.module").then(m => m.SharedModule) },
-  { path: "end-users", loadChildren: () => import("./modules/end-users/end-users.module").then(m => m.EndUsersModule) },
+  { path: "clients", loadChildren: () => import("./modules/clients/clients.module").then(m => m.ClientsModule) },
   { path: "inventories", loadChildren: () => import("./modules/inventories/inventories.module").then(m => m.InventoriesModule) },
   { path: "manufacturing", loadChildren: () => import("./modules/manufacturing/manufacturing.module").then(m => m.ManufacturingModule) },
   { path: "marketing", loadChildren: () => import("./modules/marketing/marketing.module").then(m => m.MarketingModule) },

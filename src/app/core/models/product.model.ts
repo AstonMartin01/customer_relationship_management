@@ -6,10 +6,10 @@ export interface Product {
   priceByPartner: number;
   rating: number;
   type: string;
-  stock: number;
-  delivered: number;
-  returned: number;
-  repaired: number;
-  discounted: number;
-  sold: number;
+  quantity: number;
+  deliveredQuantity: number;
+  returnedQuantity: number;
+  repairedQuantity: number;
+  discountedQuantity: number;
+  soldQuantity: number;
 }

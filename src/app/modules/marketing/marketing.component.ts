@@ -111,8 +111,8 @@ export class MarketingComponent implements OnInit {
       this.chartData = this.employeesOrProducts.map(s => s.rating);
       this.title = "Products Overview (Rating)";
     } 
-    else if (this.selectedMetric === "discounted") {
-      this.chartData = this.employeesOrProducts.map(s => s.discounted);
+    else if (this.selectedMetric === "discountedQuantity") {
+      this.chartData = this.employeesOrProducts.map(s => s.discountedQuantity);
       this.title = "Products Overview (Discounted)";
     } 
     else {

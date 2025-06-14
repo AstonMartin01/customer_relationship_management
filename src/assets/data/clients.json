@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Maria Popescu",
+    "phoneNumber": "+40 721 456 789",
+    "age": 34,
+    "purchasedProductsQuantity": 18,
+    "wishlistProductsQuantity": 5
+  },
+  {
+    "name": "Andrei Ionescu",
+    "phoneNumber": "+40 743 123 456",
+    "age": 28,
+    "purchasedProductsQuantity": 25,
+    "wishlistProductsQuantity": 2
+  },
+  {
+    "name": "Elena Georgescu",
+    "phoneNumber": "+40 755 987 321",
+    "age": 41,
+    "purchasedProductsQuantity": 12,
+    "wishlistProductsQuantity": 7
+  },
+  {
+    "name": "Cristian Dumitrescu",
+    "phoneNumber": "+40 766 345 678",
+    "age": 37,
+    "purchasedProductsQuantity": 30,
+    "wishlistProductsQuantity": 3
+  },
+  {
+    "name": "Ioana Marinescu",
+    "phoneNumber": "+40 712 654 987",
+    "age": 22,
+    "purchasedProductsQuantity": 9,
+    "wishlistProductsQuantity": 10
+  }
+]

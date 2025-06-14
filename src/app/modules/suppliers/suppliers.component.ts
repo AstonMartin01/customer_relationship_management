@@ -24,7 +24,7 @@ export class SuppliersComponent implements OnInit {
 
   ngOnInit(): void {
     this.getSuppliersData();
-    this.selectedMetric = "callsNumber";
+    this.selectedMetric = "callsCount";
     this.selectedChartType = "barVertical";
     this.onChartTypeChange();
     // this.suppliers = [
@@ -71,20 +71,20 @@ export class SuppliersComponent implements OnInit {
   }  
 
   updateChartData(): void {
-    if (this.selectedMetric === "callsNumber") {
-      this.chartData = this.suppliers.map(s => s.callsNumber);
+    if (this.selectedMetric === "callsCount") {
+      this.chartData = this.suppliers.map(s => s.callsCount);
       this.title = "Suppliers Overview (Calls Number)";
     } 
     else if (this.selectedMetric === "callsDuration") {
       this.chartData = this.suppliers.map(s => s.callsDuration);
       this.title = "Suppliers Overview (Calls Duration)";
     }  
-    else if (this.selectedMetric === "smsNumber") {
-      this.chartData = this.suppliers.map(s => s.smsNumber);
+    else if (this.selectedMetric === "smsCount") {
+      this.chartData = this.suppliers.map(s => s.smsCount);
       this.title = "Suppliers Overview (SMS Number)";
     } 
     else {
-      this.chartData = this.suppliers.map(s => s.emailsNumber);
+      this.chartData = this.suppliers.map(s => s.emailsCount);
       this.title = "Suppliers Calls Overview (E-mails Number)";
     }
   }

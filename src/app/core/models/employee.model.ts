@@ -1,9 +1,9 @@
 export interface Employee {    
-    employeeName: string;
-    employeePhone: string;
+    name: string;
+    phoneNumber: string;
     performanceScore: number;
     unexpectedDaysOff: number;
-    workedMonths: number;
+    monthsWorked: number;
     assignedTasks: number;
     solvedTasks: number;
     salary: number;

@@ -83,8 +83,8 @@ export class DeliveriesComponent implements OnInit {
       this.chartData = this.employeesOrProducts.map(s => s.unexpectedDaysOff);
       this.title = "Employee Overview (Unexpected Days Off)";
     }
-    else if (this.selectedMetric === "workedMonths") {
-      this.chartData = this.employeesOrProducts.map(s => s.workedMonths);
+    else if (this.selectedMetric === "monthsWorked") {
+      this.chartData = this.employeesOrProducts.map(s => s.monthsWorked);
       this.title = "Employee Overview (Worked Months)";
     }
     else if (this.selectedMetric === "assignedTasks") {
@@ -111,12 +111,12 @@ export class DeliveriesComponent implements OnInit {
       this.chartData = this.employeesOrProducts.map(s => s.rating);
       this.title = "Products Overview (Rating)";
     } 
-    else if (this.selectedMetric === "delivered") {
-      this.chartData = this.employeesOrProducts.map(s => s.delivered);
+    else if (this.selectedMetric === "deliveredQuantity") {
+      this.chartData = this.employeesOrProducts.map(s => s.deliveredQuantity);
       this.title = "Products Overview (Delivered)";
     } 
     else {
-      this.chartData = this.employeesOrProducts.map(s => s.returned);
+      this.chartData = this.employeesOrProducts.map(s => s.returnedQuantity);
       this.title = "Products Overview (Returned)";
     }
   }
@@ -134,7 +134,7 @@ export class DeliveriesComponent implements OnInit {
     this.dataService.getEmployee().subscribe(data => {
       this.employeesOrProducts = data || [];
       this.employeesOrProducts = this.employeesOrProducts.filter(e => e.departmentName === "deliveries");
-      this.labels = this.employeesOrProducts.map(s => s.employeeName);
+      this.labels = this.employeesOrProducts.map(s => s.name);
       this.updateChartData();
     });
   }

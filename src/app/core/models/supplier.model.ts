@@ -1,8 +1,8 @@
 export interface Supplier {
   name: string;
-  callsNumber: number;
+  callsCount: number;
   callsDuration: number;
-  callsDate: string;
-  smsNumber: number;
-  emailsNumber: number;
+  smsCount: number;
+  emailsCount: number;
+  lastCallDate: string;
 }

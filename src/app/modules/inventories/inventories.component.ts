@@ -10,7 +10,7 @@ export class InventoriesComponent implements OnInit {
   public inventory: any[] = [];
   public labels: string[] = [];
   public chartData: number[] = [];
-  public selectedInventoryType: "allProducts" | "productInHouse" | "productByPartners" | "rawMaterials" = "allProducts";
+  public selectedInventoryType: "allProducts" | "productInHouse" | "productByPartners" | "materials" = "allProducts";
   public selectedMetric: string = "price";
   public title: string = "Products Overview (Prices)";
   public chartType: string = "bar";
@@ -73,7 +73,7 @@ export class InventoriesComponent implements OnInit {
       this.getExternalProducts();
     } 
     else {
-      this.getRawMaterialsData();
+      this.getMaterialsData();
     }
   }
 
@@ -118,8 +118,8 @@ export class InventoriesComponent implements OnInit {
     });
   }
 
-  getRawMaterialsData(): void {
-    this.dataService.getRawMaterials().subscribe(data => {
+  getMaterialsData(): void {
+    this.dataService.getMaterials().subscribe(data => {
       this.inventory = data || [];
       this.labels = this.inventory.map(s => s.name);
       this.updateChartData();

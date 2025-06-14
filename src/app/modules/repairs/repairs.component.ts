@@ -111,7 +111,7 @@ export class RepairsComponent implements OnInit {
       this.title = "Products Overview (Rating)";
     }
     else {
-      this.chartData = this.employeesOrProducts.map(s => s.repaired);
+      this.chartData = this.employeesOrProducts.map(s => s.repairedQuantity);
       this.title = "Products Overview (Repaired)";
     } 
   }

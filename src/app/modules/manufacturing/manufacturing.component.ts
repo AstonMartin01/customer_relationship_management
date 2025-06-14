@@ -112,7 +112,7 @@ export class ManufacturingComponent implements OnInit {
       this.title = "Products Overview (Rating)";
     }
     else {
-      this.chartData = this.employeesOrProducts.map(s => s.stock);
+      this.chartData = this.employeesOrProducts.map(s => s.quantity);
       this.title = "Products Overview (Stock)";
     }
   }
