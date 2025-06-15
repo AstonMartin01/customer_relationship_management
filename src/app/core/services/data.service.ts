@@ -54,7 +54,7 @@ export class DataService {
     }
 
     getEmployee(): Observable<Employee[]> {
-        const apiUrl = "http://localhost:20928/crm-charts/employees";
+        const apiUrl = "http://localhost:20928/crm-charts/employee";
         return this.http.get<Employee[]>(apiUrl);
     }
 

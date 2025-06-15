@@ -1,42 +1,42 @@
 [
   {
     "name": "Supplier A",
-    "callsCount": 10,
-    "lastCallDate": "2025-06-01",
+    "callsNumber": 10,
+    "callsDate": "2025-06-01",
     "callsDuration": 100,
-    "smsCount": 10,
-    "emailsCount": 2
+    "smsNumber": 10,
+    "emailsNumber": 2
   },
   {
     "name": "Supplier B",
-    "callsCount": 30,
-    "lastCallDate": "2025-06-02",
+    "callsNumber": 30,
+    "callsDate": "2025-06-02",
     "callsDuration": 200,
-    "smsCount": 6,
-    "emailsCount": 4
+    "smsNumber": 6,
+    "emailsNumber": 4
   },
   {
     "name": "Supplier C",
-    "callsCount": 15,
-    "lastCallDate": "2025-06-03",
+    "callsNumber": 15,
+    "callsDate": "2025-06-03",
     "callsDuration": 200,
-    "smsCount": 8,
-    "emailsCount": 5
+    "smsNumber": 8,
+    "emailsNumber": 5
   },
   {
     "name": "Supplier D",
-    "callsCount": 40,
-    "lastCallDate": "2025-06-04",
+    "callsNumber": 40,
+    "callsDate": "2025-06-04",
     "callsDuration": 300,
-    "smsCount": 5,
-    "emailsCount": 1
+    "smsNumber": 5,
+    "emailsNumber": 1
   },
   {
     "name": "Supplier E",
-    "callsCount": 130,
-    "lastCallDate": "2025-06-05",
+    "callsNumber": 130,
+    "callsDate": "2025-06-05",
     "callsDuration": 150,
-    "smsCount": 13,
-    "emailsCount": 3
+    "smsNumber": 13,
+    "emailsNumber": 3
   }
 ]
