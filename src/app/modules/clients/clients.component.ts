@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { catchError } from 'rxjs';
 import { Client } from 'src/app/core/models/client.model';
 import { DataService } from 'src/app/core/services/data.service';
 
@@ -83,15 +84,20 @@ export class ClientsComponent implements OnInit {
       this.chartData = this.clients.map(s => s.wishlistProductsQuantity);
       this.title = "End Users Overview (Wishlist)";
     }
-   }
- 
+  }
+
   getClientsData(): void {
-    this.dataService.getClients().subscribe(data => {
-      this.clients = data || [];
-      this.labels = this.clients.map(s => s.name);
-      // this.callsNumbers = this.suppliers.map(s => s.callsNumber);
-      // this.callsDurations = this.suppliers.map(s => s.callsDuration);
-      this.updateChartData(); // Initialize chartData
-    });
+    this.dataService.getClients().pipe(
+      catchError(error => {
+        // console.error('Database fetch failed. Using mock data.', error);
+        return this.dataService.getClientsMock();
+      })
+    ).subscribe(data => this.processClientsData(data));
+  }
+
+  processClientsData(data: Client[]): void {
+    this.clients = data || [];
+    this.labels = this.clients.map(s => s.name);
+    this.updateChartData();
   }
 }

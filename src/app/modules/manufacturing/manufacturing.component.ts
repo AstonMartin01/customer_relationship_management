@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { catchError } from 'rxjs';
 import { Employee } from 'src/app/core/models/employee.model';
+import { Product } from 'src/app/core/models/product.model';
 import { DataService } from 'src/app/core/services/data.service';
 
 @Component({
@@ -116,22 +118,34 @@ export class ManufacturingComponent implements OnInit {
       this.title = "Products Overview (Stock)";
     }
   }
- 
+
   getInternalProducts(): void {
-    this.dataService.getProducts().subscribe(data => {
-      this.employeesOrProducts = data || [];
-      this.employeesOrProducts = this.employeesOrProducts.filter(e => e.type === "internal");
-      this.labels = this.employeesOrProducts.map(s => s.name);
-      this.updateChartData();
+    this.dataService.getProducts().pipe(
+      catchError(error => {
+        // console.error('Database fetch failed. Using mock data.', error);
+        return this.dataService.getProductsMock();
+      })
+    ).subscribe(data => {
+      const internalProducts = (data || []).filter(e => e.type === 'internal');
+      this.processData(internalProducts);
     });
   }
 
   getEmployeeData(): void {
-    this.dataService.getEmployee().subscribe(data => {
-      this.employeesOrProducts = data || [];
-      this.employeesOrProducts = this.employeesOrProducts.filter(e => e.departmentName === "manufacturing");
-      this.labels = this.employeesOrProducts.map(s => s.employeeName);
-      this.updateChartData();
+    this.dataService.getEmployee().pipe(
+      catchError(error => {
+        // console.error('Database fetch failed. Using mock data.', error);
+        return this.dataService.getEmployeeMock();
+      })
+    ).subscribe(data => {
+      const internalProducts = (data || []).filter(e => e.departmentName === "deliveries");
+      this.processData(internalProducts);
     });
+  }
+  
+  processData(data: any[]): void {
+    this.employeesOrProducts = data || [];
+    this.labels = this.employeesOrProducts.map(s => s.name);
+    this.updateChartData();
   }
 }

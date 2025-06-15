@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { catchError, of } from 'rxjs';
+import { Material } from 'src/app/core/models/material.model';
+import { Product } from 'src/app/core/models/product.model';
 import { DataService } from 'src/app/core/services/data.service';
 
 @Component({
@@ -73,7 +76,7 @@ export class InventoriesComponent implements OnInit {
       this.getExternalProducts();
     } 
     else {
-      this.getMaterialsData();
+      this.getMaterials();
     }
   }
 
@@ -93,37 +96,57 @@ export class InventoriesComponent implements OnInit {
   }
 
   getAllProducts(): void {
-    this.dataService.getProducts().subscribe(data => {
-      this.inventory = data || [];
-      this.labels = this.inventory.map(s => s.name);
-      this.updateChartData();
-    });
+    this.dataService.getProducts().pipe(
+      catchError(error => {
+        // console.error('Database fetch failed. Using mock data.', error);
+        return this.dataService.getProductsMock();
+      })
+    ).subscribe(data => this.processProductsData(data));
   }
 
   getInternalProducts(): void {
-    this.dataService.getProducts().subscribe(data => {
-      this.inventory = data || [];
-      this.inventory = this.inventory.filter(e => e.type === "internal");
-      this.labels = this.inventory.map(s => s.name);
-      this.updateChartData();
+    this.dataService.getProducts().pipe(
+      catchError(error => {
+        // console.error('Database fetch failed. Using mock data.', error);
+        return this.dataService.getProductsMock();
+      })
+    ).subscribe(data => {
+      const internalProducts = (data || []).filter(e => e.type === 'internal');
+      this.processProductsData(internalProducts);
     });
   }
 
   getExternalProducts(): void {
-    this.dataService.getProducts().subscribe(data => {
-      this.inventory = data || [];
-      this.inventory = this.inventory.filter(e => e.type === "external");
-      this.labels = this.inventory.map(s => s.name);
-      this.updateChartData();
+    this.dataService.getProducts().pipe(
+      catchError(error => {
+        // console.error('Database fetch failed. Using mock data.', error);
+        return this.dataService.getProductsMock();
+      })
+    ).subscribe(data => {
+      const externalProducts = (data || []).filter(e => e.type === 'external');
+      this.processProductsData(externalProducts);
     });
   }
 
-  getMaterialsData(): void {
-    this.dataService.getMaterials().subscribe(data => {
-      this.inventory = data || [];
-      this.labels = this.inventory.map(s => s.name);
-      this.updateChartData();
-    });
+  processProductsData(data: Product[]): void {
+    this.inventory = data || [];
+    this.labels = this.inventory.map(s => s.name);
+    this.updateChartData();
+  }
+
+  getMaterials(): void {
+    this.dataService.getMaterialsMock().pipe(
+      catchError(error => {
+        // console.error('Database fetch failed. Using mock data.', error);
+        return this.dataService.getMaterials();
+      })
+    ).subscribe(data => this.processMaterialsData(data));
+  }
+
+  processMaterialsData(data: Material[]): void {
+    this.inventory = data || [];
+    this.labels = this.inventory.map(s => s.name);
+    this.updateChartData();
   }
 }
 

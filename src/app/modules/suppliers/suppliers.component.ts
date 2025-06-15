@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { catchError } from 'rxjs';
 import { Supplier } from 'src/app/core/models/supplier.model';
 import { DataService } from 'src/app/core/services/data.service';
 
@@ -90,12 +91,17 @@ export class SuppliersComponent implements OnInit {
   }
 
   getSuppliersData(): void {
-    this.dataService.getSuppliers().subscribe(data => {
-      this.suppliers = data || [];
-      this.labels = this.suppliers.map(s => s.name);
-      // this.callsNumbers = this.suppliers.map(s => s.callsNumber);
-      // this.callsDurations = this.suppliers.map(s => s.callsDuration);
-      this.updateChartData(); // Initialize chartData
-    });
+    this.dataService.getSuppliers().pipe(
+      catchError(error => {
+        // console.error('Database fetch failed. Using mock data.', error);
+        return this.dataService.getSuppliersMock();
+      })
+    ).subscribe(data => this.processSuppliersData(data));
+  }
+
+  processSuppliersData(data: Supplier[]): void {
+    this.suppliers = data || [];
+    this.labels = this.suppliers.map(s => s.name);
+    this.updateChartData();
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { catchError } from 'rxjs';
 import { DataService } from 'src/app/core/services/data.service';
 
 @Component({
@@ -21,7 +22,7 @@ export class MarketingComponent implements OnInit {
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
-    this.getInternalProducts();
+    this.getAllProducts();
     this.selectedMetric = "price";
     this.selectedChartType = "barVertical";
     this.onChartTypeChange();
@@ -65,7 +66,7 @@ export class MarketingComponent implements OnInit {
 
   onInventoryTypeChange(): void {
     if (this.selectedInventoryType === "internalProducts") {
-      this.getInternalProducts();
+      this.getAllProducts();
       this.selectedMetric = "price";
     } 
     else {
@@ -120,22 +121,31 @@ export class MarketingComponent implements OnInit {
       this.title = "Products Overview (Sold)";
     }
   }
- 
-  getInternalProducts(): void {
-    this.dataService.getProducts().subscribe(data => {
-      this.employeesOrProducts = data || [];
-      // this.employeesOrProducts = this.employeesOrProducts.filter(e => e.type === "internal");
-      this.labels = this.employeesOrProducts.map(s => s.name);
-      this.updateChartData();
+
+  getAllProducts(): void {
+    this.dataService.getProducts().pipe(
+      catchError(error => {
+        // console.error('Database fetch failed. Using mock data.', error);
+        return this.dataService.getProductsMock();
+      })
+    ).subscribe(data => this.processData(data));
+  }  
+
+  getEmployeeData(): void {
+    this.dataService.getEmployee().pipe(
+      catchError(error => {
+        // console.error('Database fetch failed. Using mock data.', error);
+        return this.dataService.getEmployeeMock();
+      })
+    ).subscribe(data => {
+      const internalProducts = (data || []).filter(e => e.departmentName === "marketing");
+      this.processData(internalProducts);
     });
   }
 
-  getEmployeeData(): void {
-    this.dataService.getEmployee().subscribe(data => {
-      this.employeesOrProducts = data || [];
-      this.employeesOrProducts = this.employeesOrProducts.filter(e => e.departmentName === "marketing");
-      this.labels = this.employeesOrProducts.map(s => s.employeeName);
-      this.updateChartData();
-    });
+  processData(data: any[]): void {
+    this.employeesOrProducts = data || [];
+    this.labels = this.employeesOrProducts.map(s => s.name);
+    this.updateChartData();
   }
 }

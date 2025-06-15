@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgChartsModule } from 'ng2-charts';
 import { Chart, registerables } from 'chart.js';
-import { CustomerFeedbackComponent } from './modules/customer-feedback/customer-feedback.component';
+import { ClientFeedbackComponent } from './modules/client-feedback/client-feedback.component';
 import { ClientsComponent } from './modules/clients/clients.component';
 import { InventoriesComponent } from './modules/inventories/inventories.component';
 import { ManufacturingComponent } from './modules/manufacturing/manufacturing.component';
@@ -20,7 +20,7 @@ import { BarChart2Component } from './shared/chart-widgets/bar-chart/bar-chart2.
 @NgModule({
   declarations: [
     AppComponent,
-    // CustomerFeedbackComponent,
+    // ClientFeedbackComponent,
     // ClientsComponent,
     // HrComponent,
     // InventoriesComponent,

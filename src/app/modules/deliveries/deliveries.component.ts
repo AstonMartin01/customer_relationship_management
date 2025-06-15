@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { catchError } from 'rxjs';
 import { Employee } from 'src/app/core/models/employee.model';
 import { DataService } from 'src/app/core/services/data.service';
 
@@ -22,7 +23,7 @@ export class DeliveriesComponent implements OnInit {
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
-    this.getInternalProducts();
+    this.getAllProducts();
     this.selectedMetric = "price";
     this.selectedChartType = "barVertical";
     this.onChartTypeChange();
@@ -65,7 +66,7 @@ export class DeliveriesComponent implements OnInit {
 
   onInventoryTypeChange(): void {
     if (this.selectedInventoryType === "internalProducts") {
-      this.getInternalProducts();
+      this.getAllProducts();
       this.selectedMetric = "price";
     } 
     else {
@@ -120,22 +121,31 @@ export class DeliveriesComponent implements OnInit {
       this.title = "Products Overview (Returned)";
     }
   }
- 
-  getInternalProducts(): void {
-    this.dataService.getProducts().subscribe(data => {
-      this.employeesOrProducts = data || [];
-      // this.employeesOrProducts = this.employeesOrProducts.filter(e => e.type === "internal");
-      this.labels = this.employeesOrProducts.map(s => s.name);
-      this.updateChartData();
+
+  getEmployeeData(): void {
+    this.dataService.getEmployee().pipe(
+      catchError(error => {
+        // console.error('Database fetch failed. Using mock data.', error);
+        return this.dataService.getEmployeeMock();
+      })
+    ).subscribe(data => {
+      const internalProducts = (data || []).filter(e => e.departmentName === "deliveries");
+      this.processData(internalProducts);
     });
   }
 
-  getEmployeeData(): void {
-    this.dataService.getEmployee().subscribe(data => {
-      this.employeesOrProducts = data || [];
-      this.employeesOrProducts = this.employeesOrProducts.filter(e => e.departmentName === "deliveries");
-      this.labels = this.employeesOrProducts.map(s => s.name);
-      this.updateChartData();
-    });
+  getAllProducts(): void {
+    this.dataService.getProducts().pipe(
+      catchError(error => {
+        // console.error('Database fetch failed. Using mock data.', error);
+        return this.dataService.getProductsMock();
+      })
+    ).subscribe(data => this.processData(data));
+  }
+  
+  processData(data: any[]): void {
+    this.employeesOrProducts = data || [];
+    this.labels = this.employeesOrProducts.map(s => s.name);
+    this.updateChartData();
   }
 }

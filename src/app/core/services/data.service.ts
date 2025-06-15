@@ -18,13 +18,28 @@ export class DataService {
         return this.http.get<Supplier[]>(apiUrl);
     }
 
+    getSuppliersMock(): Observable<Supplier[]> {
+        const apiUrl = "assets/data/suppliers.json";
+        return this.http.get<Supplier[]>(apiUrl);
+    }   
+
     getProducts(): Observable<Product[]> {
         const apiUrl = "http://localhost:20928/crm-charts/products";
         return this.http.get<Product[]>(apiUrl);
     }
 
+    getProductsMock(): Observable<Product[]> {
+        const apiUrl = "assets/data/products.json";
+        return this.http.get<Product[]>(apiUrl);
+    }
+
     getMaterials(): Observable<Material[]> {
         const apiUrl = "http://localhost:20928/crm-charts/materials";
+        return this.http.get<Material[]>(apiUrl);
+    }
+    
+    getMaterialsMock(): Observable<Material[]> {
+        const apiUrl = "assets/data/materials.json";
         return this.http.get<Material[]>(apiUrl);
     }
 
@@ -33,8 +48,18 @@ export class DataService {
         return this.http.get<Client[]>(apiUrl);
     }
 
+    getClientsMock(): Observable<Client[]> {
+        const apiUrl = "assets/data/clients.json";
+        return this.http.get<Client[]>(apiUrl);
+    }
+
     getEmployee(): Observable<Employee[]> {
         const apiUrl = "http://localhost:20928/crm-charts/employees";
+        return this.http.get<Employee[]>(apiUrl);
+    }
+
+    getEmployeeMock(): Observable<Employee[]> {
+        const apiUrl = "assets/data/employee.json";
         return this.http.get<Employee[]>(apiUrl);
     }
 }

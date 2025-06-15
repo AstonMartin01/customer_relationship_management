@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: "marketing", loadChildren: () => import("./modules/marketing/marketing.module").then(m => m.MarketingModule) },
   { path: "sales-finance", loadChildren: () => import("./modules/sales/sales.module").then(m => m.SalesModule) },
   { path: "suppliers", loadChildren: () => import("./modules/suppliers/suppliers.module").then(m => m.SuppliersModule) },  
-  { path: "customer-feedback", loadChildren: () => import("./modules/customer-feedback/customer-feedback.module").then(m => m.CustomerFeedbackModule) },
+  { path: "client-feedback", loadChildren: () => import("./modules/client-feedback/client-feedback.module").then(m => m.ClientFeedbackModule) },
   { path: "expenses", loadChildren: () => import("./modules/expenses/expenses.module").then(m => m.ExpensesModule) },
   { path: "incomes", loadChildren: () => import("./modules/incomes/incomes.module").then(m => m.IncomesModule) },
   { path: "deliveries", loadChildren: () => import("./modules/deliveries/deliveries.module").then(m => m.DeliveriesModule) },
