@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Chart, ChartConfiguration, ChartOptions, ChartType, Ticks } from 'chart.js';
 
 @Component({
@@ -6,7 +7,8 @@ import { Chart, ChartConfiguration, ChartOptions, ChartType, Ticks } from 'chart
   templateUrl: './bar-chart2.component.html',
   styleUrls: ['./bar-chart2.component.css']
 })
-export class BarChart2Component implements OnChanges {
+export class BarChart2Component implements OnInit, OnChanges {
+  currentPath: string = '';
   @Input() labels: string[] = [];
   @Input() data: number[] = [];
   @Input() title: string = "";
@@ -22,6 +24,12 @@ export class BarChart2Component implements OnChanges {
   public barChartType: ChartType = "bar";
   public barChartData: any;
   public barChartOptions: any;
+
+  constructor(private router: Router) {}
+
+  ngOnInit(): void {
+    this.currentPath = this.router.url;
+  }
 
   ngOnChanges(): void {
     this.selectedOrder = "";
@@ -162,6 +170,15 @@ export class BarChart2Component implements OnChanges {
       this.barChartSecondColor = "dodgerblue";
       this.isDisplayedYGridLines = true;
       this.isDisplayedXGridLines = false;
+    }
+  }
+
+  navigateTo(event: Event): void {
+    const target = event.target as HTMLSelectElement;
+    const selectedValue = target?.value;
+
+    if (selectedValue) {
+      this.router.navigate([selectedValue]);
     }
   }
 }

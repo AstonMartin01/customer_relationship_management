@@ -1,7 +1,21 @@
 
 <div class="chart-container">
+
+  <span class="page-buttons">
+    <label class="label-style">Page: &nbsp;</label>
+    <select class="option-style" [value]="currentPath" (change)="navigateTo($event)">
+      <option value="/clients">clients</option>
+      <option value="/inventories">inventories</option>
+      <option value="/marketing">marketing</option>
+      <option value="/suppliers">suppliers</option>
+      <option value="/manufacturing">manufacturing</option>
+      <option value="/deliveries">deliveries</option>
+      <option value="/repairs">repairs</option>
+    </select>
+  </span>
+
   <span class="sort-buttons">
-    <label class="label-style">Select Order:</label>
+    <label class="label-style">Sort:</label>
     <select class="option-style" [(ngModel)]="selectedOrder" (change)="sortData()">
       <option value="ascending">Ascending</option>
       <option value="descending">Descending</option>

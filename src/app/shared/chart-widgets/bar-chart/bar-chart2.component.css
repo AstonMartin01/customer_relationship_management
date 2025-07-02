@@ -9,6 +9,14 @@
   float: right;
 }
 
+.page-buttons {
+  margin-top: -1.15rem;
+  margin-left: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+  float: right;
+}
+
 .label-style {
   /* padding: 0.25rem; */
 }
