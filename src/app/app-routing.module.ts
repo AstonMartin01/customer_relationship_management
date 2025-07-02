@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: "", redirectTo: "dashboard", pathMatch: "full" },
+  { path: "", redirectTo: "marketing", pathMatch: "full" },
   { path: "dashboard", loadChildren: () => import("./modules/dashboard/dashboard.module").then(m => m.DashboardModule) },
   { path: "repairs", loadChildren: () => import("./modules/repairs/repairs.module").then(m => m.RepairsModule) },
   { path: "shared", loadChildren: () => import("./shared/shared.module").then(m => m.SharedModule) },
